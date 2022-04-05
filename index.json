@@ -33,7 +33,7 @@
         "iso_varying_string": {
             "latest": {
                 "name": "iso_varying_string",
-                "version": "2.3.0",
+                "version": "2.3.1",
                 "license": "MIT",
                 "author": "Brad Richardson",
                 "maintainer": "everythingfunctional@protonmail.com",
@@ -44,11 +44,11 @@
                 "dev-dependencies": {
                     "vegetables": {
                         "git": "https://gitlab.com/everythingfunctional/vegetables",
-                        "tag": "v7.1.0"
+                        "tag": "v7.4.2"
                     },
                     "strff": {
                         "git": "https://gitlab.com/everythingfunctional/strff",
-                        "tag": "v2.1.0"
+                        "tag": "v3.0.0"
                     }
                 },
                 "git": "https://gitlab.com/everythingfunctional/iso_varying_string",
@@ -58,7 +58,7 @@
         "jsonff": {
             "latest": {
                 "name": "jsonff",
-                "version": "3.0.0",
+                "version": "3.1.1",
                 "license": "MIT",
                 "author": "Brad Richardson",
                 "maintainer": "everythingfunctional@protonmail.com",
@@ -239,7 +239,7 @@
         "M_strings": {
             "latest": {
                 "name": "M_strings",
-                "version": "0.1.0",
+                "version": "2.0.0",
                 "license": "Public Domain",
                 "author": "John S. Urban",
                 "maintainer": "urbanjost@comcast.net",
@@ -255,7 +255,7 @@
         "M_time": {
             "latest": {
                 "name": "M_time",
-                "version": "0.1.0",
+                "version": "2.0.0",
                 "license": "Public Domain",
                 "author": "John S. Urban",
                 "maintainer": "urbanjost@comcast.net",
@@ -397,7 +397,7 @@
         "strff": {
             "latest": {
                 "name": "strff",
-                "version": "2.1.0",
+                "version": "3.0.1",
                 "license": "MIT",
                 "author": "Brad Richardson",
                 "maintainer": "everythingfunctional@protonmail.com",
@@ -407,13 +407,13 @@
                 "dependencies": {
                     "iso_varying_string": {
                         "git": "https://gitlab.com/everythingfunctional/iso_varying_string.git",
-                        "tag": "v2.1.0"
+                        "tag": "v2.3.1"
                     }
                 },
                 "dev-dependencies": {
                     "vegetables": {
                         "git": "https://gitlab.com/everythingfunctional/vegetables.git",
-                        "tag": "v7.0.2"
+                        "tag": "v7.4.2"
                     }
                 },
                 "git": "https://gitlab.com/everythingfunctional/strff",
@@ -423,7 +423,7 @@
         "vegetables": {
             "latest": {
                 "name": "vegetables",
-                "version": "7.2.2",
+                "version": "7.4.2",
                 "license": "MIT",
                 "author": "Brad Richardson",
                 "maintainer": "everythingfunctional@protonmail.com",
@@ -437,7 +437,7 @@
                     },
                     "strff": {
                         "git": "https://gitlab.com/everythingfunctional/strff.git",
-                        "tag": "v2.1.0"
+                        "tag": "v3.0.0"
                     }
                 },
                 "dev-dependencies": null,
@@ -519,7 +519,21 @@
                 "maintainer": "urbanjost@comcast.net",
                 "copyright": "2020 John S. Urban",
                 "description": "(mostly)POSIX system routine interface",
-                "executable": null,
+                "executable": [
+                    {
+                        "name": "penv",
+                        "source-dir": "app",
+                        "main": "penv.f90",
+                        "dependencies": {
+                            "M_kracken": {
+                                "git": "https://github.com/urbanjost/M_kracken.git"
+                            },
+                            "M_strings": {
+                                "git": "https://github.com/urbanjost/M_strings.git"
+                            }
+                        }
+                    }
+                ],
                 "dependencies": null,
                 "dev-dependencies": {
                     "M_msg": {
@@ -664,8 +678,8 @@
         "mctc-gcp": {
             "latest": {
                 "name": "mctc-gcp",
-                "version": "2.1.2",
-                "license": "GPL-3.0-or-later",
+                "version": "2.3.1",
+                "license": "LGPL-3.0-or-later",
                 "author": [
                     "Stefan Grimme",
                     "J. Gerit Brandenburg",
@@ -702,7 +716,7 @@
         "mctc-lib": {
             "latest": {
                 "name": "mctc-lib",
-                "version": "0.2.3",
+                "version": "0.2.5",
                 "license": "Apache-2.0",
                 "author": [
                     "Sebastian Ehlert"
@@ -713,7 +727,11 @@
                 "copyright": "2020-2021 Sebastian Ehlert",
                 "description": "Modular computation tool chain library",
                 "executable": null,
-                "dependencies": null,
+                "dependencies": {
+                    "json-fortran": {
+                        "git": "https://github.com/jacobwilliams/json-fortran.git"
+                    }
+                },
                 "dev-dependencies": null,
                 "git": "https://github.com/grimme-lab/mctc-lib.git",
                 "git-tag": null
@@ -755,7 +773,7 @@
         "s-dftd3": {
             "latest": {
                 "name": "s-dftd3",
-                "version": "0.4.1",
+                "version": "0.5.1",
                 "license": "LGPL-3.0-or-later",
                 "author": [
                     "Sebastian Ehlert"
@@ -763,19 +781,27 @@
                 "maintainer": [
                     "@awvwgk"
                 ],
-                "copyright": "2019-2021 Sebastian Ehlert",
+                "copyright": "2019-2022 Sebastian Ehlert",
                 "description": "Simple reimplementation of the DFT-D3 method",
-                "executable": null,
+                "executable": [
+                    {
+                        "name": "s-dftd3",
+                        "dependencies": {
+                            "toml-f": {
+                                "git": "https://github.com/toml-f/toml-f"
+                            }
+                        }
+                    }
+                ],
                 "dependencies": {
                     "mctc-lib": {
                         "git": "https://github.com/grimme-lab/mctc-lib",
-                        "tag": "v0.2.3"
+                        "tag": "v0.2.5"
                     }
                 },
                 "dev-dependencies": {
                     "mstore": {
-                        "git": "https://github.com/grimme-lab/mstore",
-                        "tag": "v0.1.2"
+                        "git": "https://github.com/grimme-lab/mstore"
                     }
                 },
                 "git": "https://github.com/awvwgk/simple-dftd3.git",
@@ -810,7 +836,7 @@
                 "author": "John S. Urban",
                 "maintainer": "urbanjost@comcast.net",
                 "copyright": "2020 John S. Urban",
-                "description": "Unix-style commandline parsing using a prototype command and NAMELIST (STD:f2008)",
+                "description": "Unix-style commandline parsing using a prototype command and NAMELIST",
                 "executable": [
                     {
                         "name": "demo1",
@@ -1042,7 +1068,7 @@
             },
             "latest": {
                 "name": "finterp",
-                "version": "1.2.2",
+                "version": "1.3.0",
                 "license": "BSD",
                 "author": "Jacob Williams",
                 "maintainer": "Jacob Williams",
@@ -1075,15 +1101,11 @@
                 "version": "1.0.1",
                 "license": "MIT",
                 "author": "forlab contributors",
-                "maintainer": "https://github.com/fortran-fans/forlab",
+                "maintainer": "zuo.zhihua@qq.com",
                 "copyright": "2016-2021 forlab contributors",
                 "description": "A Fortran module that provides a lot of functions for scientific computing",
                 "executable": null,
-                "dependencies": {
-                    "stdlib": {
-                        "git": "https://github.com/LKedward/stdlib-fpm.git"
-                    }
-                },
+                "dependencies": null,
                 "dev-dependencies": null,
                 "git": "https://github.com/zoziha/forlab",
                 "git-tag": null
@@ -1124,7 +1146,7 @@
         "fpm": {
             "latest": {
                 "name": "fpm",
-                "version": "0.4.0",
+                "version": "0.5.0",
                 "license": "MIT",
                 "author": "fpm maintainers",
                 "maintainer": "",
@@ -1149,7 +1171,7 @@
         "test-drive": {
             "latest": {
                 "name": "test-drive",
-                "version": "0.3.0",
+                "version": "0.4.0",
                 "license": "Apache-2.0 OR MIT",
                 "author": [
                     "Sebastian Ehlert"
@@ -1193,7 +1215,7 @@
         "tblite": {
             "latest": {
                 "name": "tblite",
-                "version": "0.1.0",
+                "version": "0.2.0",
                 "license": "LGPL-3.0-or-later",
                 "author": [
                     "Sebastian Ehlert"
@@ -1206,7 +1228,8 @@
                 "executable": null,
                 "dependencies": {
                     "mctc-lib": {
-                        "git": "https://github.com/grimme-lab/mctc-lib"
+                        "git": "https://github.com/grimme-lab/mctc-lib",
+                        "tag": "v0.2.5"
                     },
                     "dftd4": {
                         "git": "https://github.com/dftd4/dftd4"
@@ -1274,5 +1297,5 @@
             }
         }
     },
-    "index-date": "Sat Sep 18 14:21:29 2021"
+    "index-date": "Tue Apr  5 06:42:08 2022"
 }
